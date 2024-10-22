@@ -4,6 +4,8 @@ from httpx import AsyncClient
 
 from app.main import app
 
+from .utils import fake
+
 base_url = "http://test"
 endpoint_url = "/api/v1/review/"
 
@@ -16,7 +18,7 @@ async def test_sucsess_review_code():
             json={
                 "repo_url": "https://github.com/shekhargulati/python-flask-docker-hello-world",
                 "candidate_level": "junior",
-                "assignment_description": "A simple hello world application.",
+                "assignment_description": fake.sentence(),
             },
         )
         assert response.status_code == status.HTTP_201_CREATED
@@ -28,9 +30,9 @@ async def test_invalid_review_code_not_valid_string_url():
         response = await client.post(
             endpoint_url,
             json={
-                "repo_url": "https:/example.com",
+                "repo_url": fake.url(),
                 "candidate_level": "junior",
-                "assignment_description": "A simple hello world application.",
+                "assignment_description": fake.sentence(),
             },
         )
         assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
@@ -43,7 +45,7 @@ async def test_invalid_review_code_withuot_candidate_level():
             endpoint_url,
             json={
                 "repo_url": "https://github.com/shekhargulati/python-flask-docker-hello-world",
-                "assignment_description": "A simple hello world application.",
+                "assignment_description": fake.sentence(),
             },
         )
         assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
