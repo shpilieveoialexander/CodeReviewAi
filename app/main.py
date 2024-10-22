@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from api.v1.api import router_v1
 from core.settings import settings
 
 app = FastAPI(
@@ -24,6 +25,7 @@ if settings.BACKEND_CORS_ORIGINS:
     )
 
 
+app.include_router(router_v1, prefix=f"/api/v1")
 # Params
 max_workers_count = multiprocessing.cpu_count() * 2 + 1
 
