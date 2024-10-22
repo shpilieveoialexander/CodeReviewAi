@@ -34,6 +34,9 @@ class Settings(BaseSettings):
         elif isinstance(value, (list, str)):
             return value
 
+    GIT_HUB_TOKEN: str = os.getenv("GIT_HUB_TOKEN")
+    OPEN_AI_API_KEY: str = os.getenv("OPEN_AI_API_KEY")
+
     class Config:
         case_sensitive = True
 
