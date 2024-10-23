@@ -41,7 +41,7 @@ async def get_repo_contents(github_repo_url: str) -> List[Dict[str, str]]:
 
         file_contents: List[Dict[str, str]] = []
         for item in contents:
-            if item["type"] == "file":
+            if item["type"] == "file" and item["name"].endswith(".py"):
                 logger.info(f"Fetching file: {item['name']}")
                 file_response = await client.get(item["download_url"], headers=headers)
                 file_contents.append(
