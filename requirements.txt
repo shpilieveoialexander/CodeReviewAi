@@ -13,6 +13,8 @@ pydantic-settings==2.1.0
 python-multipart==0.0.6
 ujson==5.9.0
 uvicorn==0.27.0
+redis==5.1.1
+aioredis==2.0.1
 
 #################
 # For Codestyle #

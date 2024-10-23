@@ -37,6 +37,8 @@ class Settings(BaseSettings):
     GIT_HUB_TOKEN: str = os.getenv("GIT_HUB_TOKEN")
     OPEN_AI_API_KEY: str = os.getenv("OPEN_AI_API_KEY")
 
+    REDIS_PORT: int = os.getenv("REDIS_PORT", 6379)
+
     class Config:
         case_sensitive = True
 

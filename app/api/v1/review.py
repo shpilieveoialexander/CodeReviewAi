@@ -2,6 +2,7 @@ from fastapi import APIRouter, status
 
 from repo.review import generate_code_review, get_repo_contents
 from schemas import v1 as schemas_v1
+from utils.redis import redis_cache
 
 router = APIRouter()
 
@@ -9,6 +10,7 @@ router = APIRouter()
 @router.post(
     "/", status_code=status.HTTP_201_CREATED, response_model=schemas_v1.ReviewResponse
 )
+@redis_cache("code_review")
 async def review_code(input_data: schemas_v1.Review) -> schemas_v1.ReviewResponse:
     """
     Generate a code review based on the contents of a GitHub repository.
