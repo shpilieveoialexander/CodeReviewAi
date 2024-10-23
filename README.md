@@ -47,3 +47,10 @@ Test project for code review of a repository.
     ```bash
    docker-compose -f docker-compose.yml up --build
     ```
+   
+
+#### PART 2 
+
+In order to reduce the load on the server, it is possible to do:
+1. Implement login and sign-up, and limit the number of requests from users in a certain period.
+2. In order to scan repositories with large nestings, you can add evaluation of files of a certain extension that relate to a specific programming language and enter their prompts.
