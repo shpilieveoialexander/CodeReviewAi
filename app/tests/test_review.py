@@ -39,7 +39,7 @@ async def test_invalid_review_code_not_valid_string_url():
 
 
 @pytest.mark.asyncio
-async def test_invalid_review_code_withuot_candidate_level():
+async def test_invalid_review_code_without_candidate_level():
     async with AsyncClient(app=app, base_url=base_url) as client:
         response = await client.post(
             endpoint_url,
